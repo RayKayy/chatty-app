@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 
-class Chatbar extends Component {
-  render() {
-    return (
-      <footer className="chatbar">
-        <input className="chatbar-username" placeholder="Your Name (Optional)" />
-        <input className="chatbar-message" placeholder="Type a message and hit ENTER" />
-      </footer>
-    );
+function Chatbar({ user, newMessage }) {
+  const onKeyPress = event => {
+    if (event.key === 'Enter') {
+      const message = event.target.value;
+      newMessage(message);
+      event.target.value = '';
+    }
   }
+  return (
+    <footer className="chatbar">
+      <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={user} />
+      <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyPress={onKeyPress} />
+    </footer>
+  );
 }
 
 class Navbar extends Component {
