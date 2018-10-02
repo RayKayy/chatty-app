@@ -45,7 +45,7 @@ class Chatbar extends Component {
 function Navbar({ online }) {
   return (
     <nav className="navbar">
-      <a href="/" className="navbar-brand">Chatty</a>
+      <a href="/" className="navbar-brand">Bootlegged Chatty</a>
       <a className="navbar-counter">{online} User(s) Online</a>
     </nav>
   )
