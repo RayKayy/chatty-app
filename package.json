@@ -1,5 +1,5 @@
 {
-  "name": "chatty-app",
+  "name": "hichat-app",
   "version": "1.0.0",
   "description": "Simple real-time Web App with React",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RayKayy/chatty-app.git"
+    "url": "https://github.com/RayKayy/hichat-app.git"
   },
   "keywords": [
     "react",
@@ -21,7 +21,7 @@
   ],
   "author": "Raymond Kwan <rayk199492@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/RayKayy/chatty-app",
+  "homepage": "https://github.com/RayKayy/hichat-app",
   "engines": {
     "node": ">=6.0.0"
   },
