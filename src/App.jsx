@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { Chatbar, Navbar } from './ChatBar.jsx';
+import Chatbar from './ChatBar.jsx';
+import Navbar from './Navbar.jsx';
 import MessageList from './MessageList.jsx'
 
 class App extends Component {
@@ -8,30 +9,38 @@ class App extends Component {
     this.state = {
       currentUser: 'Anonymous',
       data: [],
-      online: 1,
+      online: 0,
       color: ''
     };
   }
 
   componentDidMount() {
     console.log("componentDidMount <App />");
+    // Scroll to bottom of page on new messages
+    const scroll = () => window.scrollTo(0, document.getElementById('react-root').scrollHeight);
     // Websocket connection
-    this.socket = new WebSocket("ws://localhost:3001", "protocolOne");
+    this.socket = new WebSocket("ws://172.46.0.217:3001");
     this.socket.onopen = event => {
       console.log('Connected to WS')
     };
     // Handle incoming messages from WS.
     this.socket.onmessage = event => {
-      if (event.data[0] === '#') {
-        this.setState({ color: event.data });
-      } else {
-        const newMessage = JSON.parse(event.data);
-        // Check for type of info. (number of users/messages)
-        if (typeof newMessage === 'number') {
-          this.setState({ online: newMessage }, () => {console.log(this.state)});
-        } else {
-          this.setState({ data: [...this.state.data, newMessage] });
-        }
+      const message = JSON.parse(event.data);
+      switch (message.type) {
+        case 'incomingMessage':
+          this.setState({ data: [...this.state.data, message] }, scroll);
+          break;
+        case 'incomingNotification':
+          this.setState({ data: [...this.state.data, message] }, scroll);
+          break;
+        case 'setColor':
+          this.setState({ color: message.color });
+          break;
+        case 'updateCount':
+          this.setState({ online: message.count });
+          break;
+        default:
+          console.error('data not recognised', message);
       }
     }
   }
@@ -61,9 +70,9 @@ class App extends Component {
         <Navbar online={this.state.online} />
         <MessageList data={this.state.data} />
         <Chatbar
-        user={this.state.currentUser}
-        newMessage={this._newMessage}
-        changeUser={this._changeUser}
+          user={this.state.currentUser}
+          newMessage={this._newMessage}
+          changeUser={this._changeUser}
         />
       </div>
     );

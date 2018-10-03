@@ -41,6 +41,7 @@ body {
 .message {
   display: flex;
   padding: 5px;
+  flex-wrap: wrap;
 }
 
 .message.system {
@@ -57,11 +58,13 @@ body {
 
 .message-content {
   flex: 8;
+  flex-shrink: 0;
 }
 
 .message-username {
   flex: 2;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .navbar {
@@ -91,4 +94,11 @@ body {
   float: right;
   font-size: 1em;
   line-height: 60px;
+}
+
+.message-images {
+  flex: 0 1 100%;
+  img {
+    max-width: 60vw;
+  }
 }

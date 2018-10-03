@@ -20,7 +20,7 @@ class Chatbar extends Component {
       }
     }
     const onChange = key => event => {
-      this.setState({ [key]: event.target.value }, () => {console.log(this.state)})
+      this.setState({ [key]: event.target.value });
     }
     return (
       <footer className="chatbar">
@@ -42,15 +42,6 @@ class Chatbar extends Component {
   }
 }
 
-function Navbar({ online }) {
-  return (
-    <nav className="navbar">
-      <a href="/" className="navbar-brand">Bootlegged Chatty</a>
-      <a className="navbar-counter">{online} User(s) Online</a>
-    </nav>
-  )
-}
-
-export {Navbar, Chatbar};
+export default Chatbar;
 
 
