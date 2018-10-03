@@ -30,7 +30,7 @@ $ npm install
 
 
 4. Navigate to *localhost:3000* on your browser of choice and enjoy chatting realtime with your friends.
-> Change the server settingd for the hicaht-app/hichat-server according to your setup!
+> Change the server settings for the hicaht-app/hichat-server according to your setup!
 
 ### Features
 
@@ -42,7 +42,7 @@ $ npm install
 
 ### Screenshots
 
-
+!["stretch/core features"](https://github.com/RayKayy/hichat-app/blob/master/docs/hichat_demo.png?raw=true)
 
 ### Dependencies
 
