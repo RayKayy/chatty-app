@@ -31,8 +31,6 @@ class App extends Component {
       const message = JSON.parse(event.data);
       switch (message.type) {
         case 'incomingMessage':
-          this.setState({ data: [...this.state.data, message] }, scroll);
-          break;
         case 'incomingNotification':
           this.setState({ data: [...this.state.data, message] }, scroll);
           break;
