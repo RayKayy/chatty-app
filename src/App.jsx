@@ -3,6 +3,9 @@ import Chatbar from './ChatBar.jsx';
 import Navbar from './Navbar.jsx';
 import MessageList from './MessageList.jsx'
 
+// Modify this to change websocket server address.
+const WS_SERVER = "ws://localhost:3001"
+
 class App extends Component {
   constructor() {
     super();
@@ -19,7 +22,7 @@ class App extends Component {
     // Scroll to bottom of page on new messages
     const scroll = () => window.scrollTo(0, document.getElementById('react-root').scrollHeight);
     // Websocket connection
-    this.socket = new WebSocket("ws://172.46.0.217:3001");
+    this.socket = new WebSocket(WS_SERVER);
     this.socket.onopen = event => {
       console.log('Connected to WS')
     };
@@ -54,7 +57,7 @@ class App extends Component {
     };
     this.socket.send(JSON.stringify(newM));
   }
-  // Handle user change
+  // Handle username change
   _changeUser = username => {
     const notice = {
       type: 'postNotification',

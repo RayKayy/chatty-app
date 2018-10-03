@@ -1,44 +1,52 @@
-React Boilerplate
+Hi Chat! App
 =====================
 
-A minimal and light dev environment for ReactJS.
+A real time multi-client SPA using React.js and Websockets.
 
-### Usage
+### About
 
-Clone the boilerplate and create your own git repo.
+This is a single page application developed using React.js and complimented with
+Websockets(WS) to provide a platorm for real time transfer of messages between all clients connected to the WS server.
 
+### Getting Started
+
+1. Clone this repo and install all dependencies.
+```bash
+$ git clone https://github.com/RayKayy/hichat-app.git
+$ npm install
 ```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
+> Webpack might take some time to compile for the first time.
+
+2. Clone this dependent repo and install dependencies for setting up the Websocket server.
+```bash
+$ git clone https://github.com/RayKayy/hichat-server.git
+$ npm install
 ```
 
-Install the dependencies and start the server.
+3. Start and run the application:
+    - `cd` to the hichat-server directory and then run `npm start`
+    - `cd` to the hichat-app directory and then run `npm start`
+> The application default websocket server address is *ws://localhost:3001*;
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
 
-### Static Files
+4. Navigate to *localhost:3000* on your browser of choice and enjoy chatting realtime with your friends.
+> Change the server settingd for the hicaht-app/hichat-server according to your setup!
 
-You can store static files like images, fonts, etc in the `build` folder.
+### Features
 
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
+- Realtime messages between all clients.
+- Auto scroll on new message.
+- Url referring to images within message content will be parsed and render on screen.
+- Each user is assigned a unique color represented on the username. (will not change on username change)
+- Messages is saved locally on each clients state; no persistent messages on server.
 
-### Linting
+### Screenshots
 
-This boilerplate project includes React ESLint configuration.
 
-```
-npm run lint
-```
 
 ### Dependencies
 
+* hichat-server
 * React
 * Webpack
 * [babel-loader](https://github.com/babel/babel-loader)
