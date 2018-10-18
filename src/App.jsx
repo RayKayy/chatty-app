@@ -57,12 +57,14 @@ class App extends Component {
   }
   // Handle username change
   _changeUser = username => {
-    const notice = {
-      type: 'postNotification',
-      content: `${this.state.currentUser} has changed their name to ${username}.`
+    if (this.state.currentUser !== username) {
+      const notice = {
+        type: 'postNotification',
+        content: `${this.state.currentUser} has changed their name to ${username}.`
+      }
+      this.socket.send(JSON.stringify(notice));
+      this.setState({ currentUser: username });
     }
-    this.socket.send(JSON.stringify(notice));
-    this.setState({ currentUser: username });
   }
 
   render() {
